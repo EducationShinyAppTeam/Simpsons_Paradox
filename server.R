@@ -2,7 +2,6 @@ library(shiny)
 library(shinydashboard)
 library(ggplot2)
 library(shinyBS)
-library(mdsr)
 library(plotly)
 
 shinyServer(function(input, output,session) {

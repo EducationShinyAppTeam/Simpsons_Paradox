@@ -17,7 +17,7 @@ summary(model5)$r.squared
 
 
 #SAT & Salary:
-library(mdsr)
+library(ggplot2)
 SAT_2010_new<-SAT_2010[c(1,17,49,23,18,10,2,11,8,37),]
 SAT_2010_salary_plot<-ggplot(data=SAT_2010_new,aes(x=salary,y=total))+
   geom_point()+geom_smooth(method = "lm")+ylab("Average Total SAT Score")+
