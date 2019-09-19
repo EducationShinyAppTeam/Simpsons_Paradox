@@ -6,6 +6,9 @@ library(plotly)
 
 shinyServer(function(input, output,session) {
   
+  # From https://github.com/beanumber/mdsr/blob/master/data/SAT_2010.rda
+  load("./SAT_2010.rda")
+  
   #Explore Button
   observeEvent(input$explore, {
     updateTabItems(session, "tabs", "first")

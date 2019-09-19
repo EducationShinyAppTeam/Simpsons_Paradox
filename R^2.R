@@ -14,9 +14,6 @@ summary(model3)$r.squared
 summary(model4)$r.squared
 summary(model5)$r.squared
 
-# From https://github.com/beanumber/mdsr/blob/master/data/SAT_2010.rda
-load("./SAT_2010.rda")
-
 #SAT & Salary:
 library(ggplot2)
 SAT_2010_new<-SAT_2010[c(1,17,49,23,18,10,2,11,8,37),]
