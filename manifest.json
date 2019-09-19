@@ -1996,10 +1996,13 @@
       "checksum": "f2788768c2f4d103b23868f4decdab71"
     },
     "R^2.R": {
-      "checksum": "d7ab3f6e2a1aa9f72c36b658ee3ae9ff"
+      "checksum": "24ff504c04bcf0d42c31ee1ff70a1817"
     },
     "README.md": {
       "checksum": "3239bf70d66bafd1f2c9bbc566bf8e58"
+    },
+    "SAT_2010.rda": {
+      "checksum": "f2e8e7755a695e9349dea94a60442b2b"
     },
     "server.R": {
       "checksum": "904edc0545def50700943ee58ff0b6e1"
