@@ -3,6 +3,7 @@ library(shinydashboard)
 library(ggplot2)
 library(shinyBS)
 library(plotly)
+library(corrplot)
 
 
 dashboardPage(skin="purple",
@@ -165,7 +166,9 @@ dashboardPage(skin="purple",
                 p(class = "hangingindent",
                   "Sievert, C., Parmer, C., Hocking, T., Chamberlain, S., Ram, K., Corvellec, M. and Despouy, P. (2020), plotly: Create Interative Web Graphics via 'plotly.js', R Package. Available from https://cran.r-project.org/web/packages/plotly/index.html"),
                 p(class = "hangingindent",
-                  "Wickham H. (2016), ggplot2: Elegant graphics for data analysis, R Package, New York: Springer-Verlag. Available from https://ggplot2.tidyverse.org"),
+                  "Wei, T., Simko, V., Levy, M., Xie, Y., Jin, Y. and Zemla, J. (2017), corrplot: Visualization of a Correlation Matrix, R Package. Available from https://cran.r-project.org/web/packages/corrplot/index.html"),
+                p(class = "hangingindent",
+                  "Wickham H. (2016), ggplot2: Elegant graphics for data analysis, R Package, New York: Springer-Verlag. Available from https://ggplot2.tidyverse.org")
                 
                 )
 )#end of tabItem
