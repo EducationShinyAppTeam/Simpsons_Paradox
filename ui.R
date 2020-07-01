@@ -5,37 +5,48 @@ library(shinyBS)
 library(plotly)
 
 
-dashboardPage(#skin="black",
+dashboardPage(skin="purple",
               
               #Title
-              dashboardHeader(title="Simpson's paradox",titleWidth=260),
-              
+              dashboardHeader(
+                title="Simpson's paradox",
+                titleWidth=250,
+                tags$li(class = "dropdown",
+                      tags$a(href='https://shinyapps.science.psu.edu/',
+                             icon("home")))
+                ),
               #Sidebar
               dashboardSidebar(
              
-                width = 235,
+                width = 250,
                 sidebarMenu(
                   id = "tabs",
                   menuItem("Overview", tabName = "over", icon = icon("dashboard")),
-                  menuItem("Exploration", tabName = "first", icon = icon("wpexplorer"))
-                )),
+                  menuItem("Exploration", tabName = "first", icon = icon("wpexplorer")),
+                  menuItem("References",tabName = "Ref",icon = icon("leanpub"))),
+                  #PSU logo
+                  tags$div(
+                    class = "sidebar-logo",
+                    boastUtils::psu_eberly_logo("reversed")
+                  )
+                ),
               
               #Content within the tabs
               dashboardBody(
                 tags$head(
-                  tags$link(rel = "stylesheet", type = "text/css", href = "sidebar.css")
+                  tags$link(rel = "stylesheet", type = "text/css", 
+                            href="https://educationshinyappteam.github.io/Style_Guide/theme/boast.css")
                 ),
                 
                 tabItems(
                   tabItem(tabName = "over",
-                          tags$a(href='http://stat.psu.edu/',tags$img(src='PS-HOR-RGB-2C.png', align = "left", width = 180)),
-                          br(),br(),br(),
-                          h3(tags$b("About:")),
-                          h4("In this app you will explore Simpson's paradox.
+                          
+                          h1("Simpsons Paradox"),
+                          p("In this app you will explore Simpson's paradox.
                                       Simpson's paradox is a phenomenon in which a trend appears in different 
                                       groups of data but disappears or reverses when these groups are combined."
                           ),
-                          h4(p("This app examines SAT scores in 12 states and how they are related to 
+                          p("This app examines SAT scores in 12 states and how they are related to 
                                                teachers' salaries in year 2010. The states are divided into 6 
                                                with high SAT participation rates ( California, Maryland,
                                                 Massachusetts, New Jersey, Pennsylvania and
@@ -44,38 +55,46 @@ dashboardPage(#skin="black",
                                                Nebraska, North Dakota, Tennessee and Wisconsin ).
 
                                                "
-                          )),
+                          ),
                           
-                          h4(tags$li("When you just look at the states with high SAT
+                          p(tags$li("When you just look at the states with high SAT
                                                        participation rates ( blue circles ), you will see a 
                                                        positive relationship. Similarly, if you just look 
                                                        at the states with low SAT participation 
                                                        rates ( orange circles ), there is also a positive relationship.")),
-                          h4(tags$li("Looking at all 12 states together, you will see
+                          p(tags$li("Looking at all 12 states together, you will see
                                                        a negative relationship ( black line ). The difference 
                                                        between the black line and the orange and blue lines illustrates 
                                                        Simpson's paradox.")),
-                          h4(tags$li("What would the data look like if the participation rates were 
-                                                       more equal?", tags$strong("Adjust the slider to see!"))),
+                          p(tags$li("What would the data look like if the participation rates were 
+                                                       more equal? Adjust the slider to see!")), 
+                         
                           br(),
-                          h3(tags$b("Instructions:")),
-                          h4(tags$li("Click the Explore button below to see the plot of original/actual paradox effect.")),
-                          h4(tags$li("Move the slider to see how making the participation rates more equal lessen
+                          h2("Instructions"),
+                          p(tags$li("Click the Explore button below to see the plot of original/actual paradox effect.")),
+                          p(tags$li("Move the slider to see how making the participation rates more equal lessen
                                       the paradox effect.")),
                           div(style = "text-align: center",bsButton("explore", "Explore", icon("bolt"), size = "large")),
                           br(),
-                          h3(tags$b("Acknowledgements:")),
-                          h4(tags$div("This app was developed and coded by Jinglin Feng. Special thanks to Alex Chen for being my partner in this project. 
-                                    Information about SAT results by state for 2010 was drawn from 
-                                    Baumer, B., Kaplan, D., & Horton, N. J. (2017).",tags$i("Modern data science with R."), 
-                                      "Special thanks to Chelsea Wang and Yuxin Zhang for help on some programming issues."))
+                          h2("Acknowledgements"),
+                          p("This app was developed and programmed by Zhuolin Luo extending earlier work by  Jinglin Feng."),
+                          p(
+                             "Information about SAT results by state for 2010 was drawn from 
+                                    Baumer, B., Kaplan, D., & Horton, N. J. (2017)."),
+                          
+                          br(),
+                          p("We would like to extend a special thanks to the Shiny Program Students.",
+                            br(),
+                            br(),
+                            br(),
+                            div(class = "updated", "Last Update: 07/01/2020 by ZL.")
+                          )
+                          
                   ),
                   
                   #Define the content contained within part 1 ie. tabname "first"
                   tabItem(tabName = "first",
-                          div(style="display: inline-block;vertical-align:top;",
-                              tags$a(href='https://shinyapps.science.psu.edu/',tags$img(src='homebut.PNG', width = 15))
-                          ),
+                          
                           fluidRow(
                               
                               column(6,
@@ -131,8 +150,25 @@ dashboardPage(#skin="black",
                                  )
                           
                   )
-              )
-)
+              ),
+              
+              tabItem(
+                tabName = "Ref",
+                withMathJax(),
+                h2("References"),
+                p(class = "hangingindent",
+                  "Bailey, E. (2015), shinyBS: Twitter bootstrap components for shiny, R package. Available from https://CRAN.R-project.org/package=shinyBS"),
+                p(class = "hangingindent",
+                  "Chang, W. and Borges Ribeio, B. (2018), shinydashboard: Create dashboards with 'Shiny', R Package. Available from https://CRAN.R-project.org/package=shinydashboard"),
+                p(class = "hangingindent",
+                  "Chang, W., Cheng, J., Allaire, J., Xie, Y., and McPherson, J. (2019), shiny: Web application framework for R, R Package. Available from https://CRAN.R-project.org/package=shiny"),
+                p(class = "hangingindent",
+                  "Sievert, C., Parmer, C., Hocking, T., Chamberlain, S., Ram, K., Corvellec, M. and Despouy, P. (2020), plotly: Create Interative Web Graphics via 'plotly.js', R Package. Available from https://cran.r-project.org/web/packages/plotly/index.html"),
+                p(class = "hangingindent",
+                  "Wickham H. (2016), ggplot2: Elegant graphics for data analysis, R Package, New York: Springer-Verlag. Available from https://ggplot2.tidyverse.org"),
+                
+                )
+)#end of tabItem
 )
 )
 
