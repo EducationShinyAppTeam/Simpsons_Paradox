@@ -78,18 +78,14 @@ dashboardPage(skin="purple",
                           div(style = "text-align: center",bsButton("explore", "Explore", icon("bolt"), size = "large")),
                           br(),
                           h2("Acknowledgements"),
-                          p("This app was developed and programmed by Zhuolin Luo extending earlier work by  Jinglin Feng."),
-                          p(
-                             "Information about SAT results by state for 2010 was drawn from 
-                                    Baumer, B., Kaplan, D., & Horton, N. J. (2017)."),
+                          p("This app was developed and programmed by Jinglin Feng and updated by Zhuolin Luo in 2020."),
                           
-                          br(),
-                          p("We would like to extend a special thanks to the Shiny Program Students.",
+                         
                             br(),
                             br(),
                             br(),
-                            div(class = "updated", "Last Update: 07/01/2020 by ZL.")
-                          )
+                            div(class = "updated", "Last Update: 07/07/2020 by ZL.")
+                          
                           
                   ),
                   
@@ -100,9 +96,7 @@ dashboardPage(skin="purple",
                               
                               column(6,
                                  h3("Plot:"),
-                                 
-                                 tags$style(HTML(".js-irs-0 .irs-single, .js-irs-0 .irs-bar-edge, .js-irs-0 .irs-bar {background: #1C2C5B}")),
-                                 
+                               
                                  div(style = "position:relative;right:-6em;",
                                  sliderInput("integer", label = div(style='width:216%;', 
                                                                             div(style='float:left; width:50%', 'No Paradox Effect'), 
@@ -132,7 +126,6 @@ dashboardPage(skin="purple",
                                      is the state average SAT score ; The variable 'sat pct' is 
                                      the percent of students taking the SAT in that state."),
                                  
-                                 #tags$style(HTML(".js-irs-0 .irs-single, .js-irs-0 .irs-bar-edge, .js-irs-0 .irs-bar {background: #1C2C5B}")),
                                  img(src="table.jpg", width = "306px", height = "400px", style="display: block; margin-left: auto; margin-right: auto;"),
                                  br(),
                                  h4(tags$div(
@@ -159,6 +152,8 @@ dashboardPage(skin="purple",
                 h2("References"),
                 p(class = "hangingindent",
                   "Bailey, E. (2015), shinyBS: Twitter bootstrap components for shiny, R package. Available from https://CRAN.R-project.org/package=shinyBS"),
+                p(class = "hangingindent",
+                  "Baumer, B., Kaplan, D., & Horton, N. J. (2017), Information about SAT results by state for 2010"),
                 p(class = "hangingindent",
                   "Chang, W. and Borges Ribeio, B. (2018), shinydashboard: Create dashboards with 'Shiny', R Package. Available from https://CRAN.R-project.org/package=shinydashboard"),
                 p(class = "hangingindent",

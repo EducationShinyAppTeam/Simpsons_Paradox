@@ -52,7 +52,7 @@ shinyServer(function(input, output,session) {
       
       p=ggplot(data=SAT_2010_plot2,aes(salary,total, col=SAT_grp, label=state
       ))+geom_smooth(method="lm", se=F)+
-        labs(x="Teachers' Salaries", y="SAT Scores")+geom_point(aes(text=paste("State:", state, "\n",
+        labs(x="Teachers' salaries ($)", y="SAT scores")+geom_point(aes(text=paste("State:", state, "\n",
                                                                               "New Salary:", salary,"\n",
                                                                               'New SAT Score:', total,"\n",
                                                                               '', SAT_grp)),size = 3, pch=21)
