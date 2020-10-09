@@ -13,7 +13,7 @@ shinyServer(function(input, output,session) {
   
   #Explore Button
   observeEvent(input$explore, {
-    updateTabItems(session, "tabs", "first")
+    updateTabItems(session, "pages", "first")
   })
   
   
