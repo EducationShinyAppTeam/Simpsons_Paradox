@@ -20,6 +20,13 @@ dashboardPage(skin="purple",
               dashboardHeader(
                 title="Simpson's paradox",
                 titleWidth=250,
+                tags$li(class="dropdown",
+                        actionLink("info", icon("info"), class="myClass")),
+                tags$li(
+                  class = "dropdown",
+                  tags$a(target = "_blank", icon("comments"),
+                         href = "https://pennstate.qualtrics.com/jfe/form/SV_7TLIkFtJEJ7fEPz?appName=Simpsons_Paradox"
+                  )),
                 tags$li(class = "dropdown",
                         tags$a(href='https://shinyapps.science.psu.edu/',
                                icon("home")))
@@ -28,7 +35,7 @@ dashboardPage(skin="purple",
               dashboardSidebar(
                 width = 250,
                 sidebarMenu(
-                  id = "tabs",
+                  id = "pages",
                   menuItem("Overview", tabName = "over", icon = icon("dashboard")),
                   menuItem("Exploration", tabName = "first", icon = icon("wpexplorer")),
                   menuItem("References",tabName = "Ref",icon = icon("leanpub"))),
