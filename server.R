@@ -1,9 +1,7 @@
 library(shiny)
 library(shinydashboard)
 library(ggplot2)
-library(shinyBS)
 library(plotly)
-library(corrplot)
 
 
 shinyServer(function(input, output,session) {
@@ -52,56 +50,60 @@ shinyServer(function(input, output,session) {
       #   xlab("Average Teacher Salary")
       
       p<- ggplot(data=SAT_2010_plot2, aes(salary,total, col=SAT_grp, label=state))+
-        geom_point(aes(text=paste("State:", state, "\n", "New Salary:",
-                                  salary,"\n", 'New SAT Score:', total,"\n",
-                                  '', SAT_grp)),size = 3, pch=21)+
-        geom_smooth(method = "lm",se = F)+
+        geom_smooth(method = "lm", se = F, formula = y~x)+
+        # geom_point(aes(text = paste("State:", state, "\n", "New Salary:",
+        #                           salary,"\n", 'New SAT Score:', total,"\n",
+        #                           '', SAT_grp)),size = 3, pch=21)+
+        geom_point(size = 3, pch = 21)+
         labs(x="Teachers' salaries ($)", y="SAT scores")
         
       
       
       pp <-p + 
-        geom_smooth(method = "lm",se = F, color = "black", linetype = "longdash",lwd=1.5)+
+        geom_smooth(method = "lm",se = F, color = "black", linetype = "longdash",lwd=1.5, formula = y~x)+
         scale_colour_manual(name='',values=c('Low SAT Participation State'='orange','High SAT Participation State'='blue',
                                              'black'='black'))+
         theme_bw()+
         theme(axis.title.x = element_text( face="bold"),
               axis.title.y = element_text(face="bold"),
               panel.background = element_blank(),
-              legend.position="none",
-              axis.line = element_line(color = 'black'))
-      
-      ggplotly(pp,tooltip =  "text")%>% plotly::config(displayModeBar = F)
+              axis.line = element_line(color = 'black'),
+              legend.position = "bottom"
+              )
+        
+      ggplotly(pp,tooltip =  "all")%>% plotly::config(displayModeBar = F)
       
     })
       
-      output$blue = renderText({
-        paste0("The blue line represents High SAT Participation States Regression.")
-      })
-      
-      output$orange = renderText({
-        paste0("The orange line represents Low SAT Participation States Regression.")
-      })
-      
-      output$black = renderText({
-        paste0("The black dotted line represents Overall Regression.")
-      })
       
       output$HLtable <- DT::renderDT(
-        HL <- data.frame(
-          State = c("California","Maryland","Massachusetts","New Jersey","Pennsylvania","Rhode Island",
-                    "Kansas", "Minnesota", "Nebraska","North Dakota","Tennessee","Wisconsin"),
-          Salary = c(71611, 67167, 72734, 68384, 62112, 62668, 
-                     48988, 55051, 48537, 45111, 48603, 53826),
-          Total = c(1517, 1502, 1547, 1506, 1473, 1477, 
-                    1752, 1781, 1746, 1733, 1712, 1778),
-          Sat_pct =c(53, 74, 89, 78, 73, 68, 
-                     7, 7, 5, 3, 10, 5)
+        expr = {
+          data.frame(
+            row.names = c("California","Maryland","Massachusetts","New Jersey","Pennsylvania","Rhode Island",
+                      "Kansas", "Minnesota", "Nebraska","North Dakota","Tennessee","Wisconsin"),
+            Salary = c(71611, 67167, 72734, 68384, 62112, 62668, 
+                       48988, 55051, 48537, 45111, 48603, 53826),
+            Total = c(1517, 1502, 1547, 1506, 1473, 1477, 
+                      1752, 1781, 1746, 1733, 1712, 1778),
+            Participation = c(53, 74, 89, 78, 73, 68, 7, 7, 5, 3, 10, 5),
+            Group = c("H","H","H","H","H","H","L","L","L","L","L","L")
+          )
+        },
+        style = "bootstrap4",
+        options = list(
+          responsive = TRUE,
+          scrollX = TRUE,
+          ordering = TRUE,
+          paging = FALSE,
+          lengthChange = FALSE,
+          pageLength = 12,
+          searching = FALSE,
+          info = FALSE,
+          columnDefs = list(
+            list(className = "dt-center", targets = 1:4)
+          )
         )
       )
-  
-    
+})
 
-}
-)
 
