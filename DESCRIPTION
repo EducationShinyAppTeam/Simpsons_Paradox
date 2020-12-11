@@ -1,0 +1,28 @@
+Title: Simpson's Paradox
+ShortName: Simpson's Paradox
+Date: 2020-12-11
+Lifecycle: experimental
+Authors@R: c(
+    person(given = "Jinglin", family = "Feng", role = c("aut", "cre")),
+    person(given = "Alex", family = "Chen", role = c("ctb")),
+    person(given = "Chelsea", family = "Wang", role = c("ctb")),
+    person(given = "Yuxin", family = "Zhang", role = c("ctb")),
+    person(given = "Zhuolin", family = "Luo", role = c("aut")),
+    person(given = "Neil", family = "Hatfield", email = "njh5464@psu.edu", role = c("aut"))
+  )
+Chapter: Chapter 4
+Description: In this app you will explore Simpson's paradox. Simpson's paradox
+    is a phenomenon in which a trend appears in different groups of data but 
+    disappears or reverses when these groups are combined.
+LearningObjectives: c(
+    "The student will understand that Simpson's paradox occurs whenever a grouping
+    factor is applied or if the groups are merged together.",
+    "The student will understand that Simpson's paradox applies to trends in the
+    data."
+  )
+DisplayMode: Normal
+URL: https://psu-eberly.shinyapps.io/Simpsons_Paradox
+BugReports: https://github.com/EducationShinyAppTeam/Simpsons_Paradox/issues
+License: CC-BY-NC-SA-4.0
+Tags: real data, simulation
+Type: Shiny
